@@ -1,0 +1,27 @@
+.row
+  .col-md-11
+    %h1 Report Listing
+.row
+  .col-md-8
+    %ul.list-group
+      - @reports.each do |report|
+        %li.list-group-item
+          = link_to report.report_name, report_path(report)
+  .col-md-2
+    / Button trigger modal
+    %button.btn.btn-info{"data-target" => "#reportForm", "data-toggle" => "modal"}
+      Launch Report Form
+    / Modal
+    #reportForm.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+      .modal-dialog
+        .modal-content
+          .modal-header
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+            %h4#myModalLabel.modal-title New Report Form
+          .modal-body
+            = render 'form'
+          .modal-footer
+            %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+        / /.modal-content
+      / /.modal-dialog
+    / /.modal

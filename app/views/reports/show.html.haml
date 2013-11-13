@@ -1,0 +1,22 @@
+.row
+  .col-md-11
+    %h2
+      = @report.report_name
+.row
+  .col-md-11
+    = simple_form_for(@report, :defaults => { :wrapper_html => {:class => 'form-group'}, :input_html => { :class => 'form-control' } }) do |f|
+
+      = f.input :start_date, :input_html => { :data => {:behaviour => :datepicker} },  placeholder: "Date Range [Start Date]"
+
+      = f.input :end_date, :input_html => { :data => { :behaviour => :datepicker } }, placeholder: "Date Range [End Date]"
+
+      = link_to "Back", root_path, class: "btn btn-primary"
+
+      = f.submit 'Generate Detail Report', class: "btn btn-info"
+      / = f.submit 'Generate Summary Report', class: "btn btn-info"
+
+:javascript
+  $('[data-behaviour~=datepicker]').datepicker({
+    format: "yyyy-mm-dd"
+  });
+

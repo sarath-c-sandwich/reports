@@ -1,0 +1,7 @@
+= simple_form_for(Report.new, :defaults => { :wrapper_html => {:class => 'form-group'}, :input_html => { :class => 'form-control' } }) do |f|
+  %p
+    = f.input :report_name
+  %p
+    = f.input :report_description
+  %p
+    = f.submit 'Save', class: 'btn btn-success'

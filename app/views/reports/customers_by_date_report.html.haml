@@ -1,0 +1,39 @@
+.row
+  .col-md-11
+    %h2
+      = @report.report_name
+.row
+  .col-md-11
+    %table.table.table-striped
+      %tr
+        %th
+          %p Name
+        %th
+          %p Address
+        %th
+          %p Bussiness Type ID
+        %th
+          %p Portal ID
+      - @reports.each do |report|
+        %tr
+          %td
+            = report.name
+          %td
+            = report.address
+          %td
+            = report.business_type_uuid
+          %td
+            = report.portal_uuid
+      %tr
+        %td{colspan: "4"}
+          %p.active
+            %span
+              %strong
+                Total customer for #{@report_start_date} ~ #{@report_end_date} ::
+            %span
+              %h2
+                = @reports.size
+
+      %tr
+        %td{colspan: "4"}
+          = link_to "Back", root_path, class: 'btn btn-primary'
